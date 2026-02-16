@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luz de Esperança - Velas Virtuais</title>
+
+<style>
+body{
+    margin:0;
+    font-family: Arial, sans-serif;
+    background: radial-gradient(circle at top, #1a1a2e, #000);
+    color: white;
+    text-align:center;
+}
+
+header{
+    padding:40px 20px;
+}
+
+h1{
+    font-size:40px;
+    color:#ffd369;
+}
+
+.sub{
+    font-size:18px;
+    opacity:0.8;
+}
+
+.container{
+    max-width:800px;
+    margin:auto;
+    padding:20px;
+}
+
+button{
+    background:#ffd369;
+    border:none;
+    padding:12px 25px;
+    font-size:16px;
+    cursor:pointer;
+    border-radius:30px;
+    margin-top:10px;
+}
+
+button:hover{
+    background:#ffb703;
+}
+
+.candle{
+    font-size:120px;
+    margin:20px 0;
+    cursor:pointer;
+}
+
+form{
+    margin-top:30px;
+}
+
+input, textarea, select{
+    width:90%;
+    padding:10px;
+    margin:10px 0;
+    border-radius:10px;
+    border:none;
+}
+
+.mural{
+    margin-top:40px;
+    background:#111;
+    padding:20px;
+    border-radius:15px;
+}
+
+.pedido{
+    background:#222;
+    padding:10px;
+    margin:10px 0;
+    border-radius:10px;
+}
+
+footer{
+    margin-top:40px;
+    padding:20px;
+    font-size:14px;
+    opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🕯️ Luz de Esperança</h1>
+    <p class="sub">Acenda sua vela virtual e entregue sua intenção com fé.</p>
+</header>
+
+<div class="container">
+
+    <div class="candle" id="vela" onclick="acender()">🕯️</div>
+    <button onclick="acender()">Acender Vela</button>
+
+    <form onsubmit="enviarPedido(event)">
+        <h2>Deixe sua Intenção</h2>
+        <input type="text" id="nome" placeholder="Seu nome" required>
+        <textarea id="mensagem" placeholder="Digite seu pedido ou gratidão..." required></textarea>
+        
+        <select id="tipo">
+            <option>Pela saúde</option>
+            <option>Pela família</option>
+            <option>Prosperidade</option>
+            <option>Gratidão</option>
+        </select>
+        
+        <button type="submit">Enviar Intenção</button>
+    </form>
+
+    <div class="mural">
+        <h2>✨ Mural de Intenções</h2>
+        <div id="listaPedidos"></div>
+    </div>
+
+    <div style="margin-top:40px;">
+        <h2>💛 Contribua para manter as velas acesas</h2>
+        <p>Pix: seuemail@email.com</p>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 Luz de Esperança - Todos os direitos reservados
+</footer>
+
+<script>
+function acender(){
+    const vela = document.getElementById("vela");
+    vela.innerHTML = "🔥";
+    alert("Sua vela foi acesa! Que sua intenção seja atendida 🙏");
+}
+
+function enviarPedido(event){
+    event.preventDefault();
+    
+    const nome = document.getElementById("nome").value;
+    const mensagem = document.getElementById("mensagem").value;
+    const tipo = document.getElementById("tipo").value;
+    
+    const lista = document.getElementById("listaPedidos");
+    
+    const novoPedido = document.createElement("div");
+    novoPedido.classList.add("pedido");
+    novoPedido.innerHTML = "<strong>" + nome + "</strong> (" + tipo + ")<br>" + mensagem;
+    
+    lista.prepend(novoPedido);
+    
+    document.querySelector("form").reset();
+}
+</script>
+
+</body>
+</html>
